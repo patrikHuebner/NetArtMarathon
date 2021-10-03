@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-require('@/assets/styles/fonts.css')
-require('@/assets/styles/main.css')
-require('@/assets/styles/responsive.css')
+import "@/assets/bootstrap/bootstrap.min.css";
+
+require('@/assets/styles/index.scss')
 
 createApp(App).use(store).use(router).mount('#app')

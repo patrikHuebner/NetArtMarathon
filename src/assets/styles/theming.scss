@@ -1,0 +1,10 @@
+@import 'theming/mixins';
+
+$themes: ();
+$themeValues: ();
+
+@import 'theming/theme_light';
+@include generateThemeMappings(light, $light);
+
+@import 'theming/theme_dark';
+@include generateThemeMappings(dark, $dark);
