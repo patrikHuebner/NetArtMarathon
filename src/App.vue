@@ -37,6 +37,8 @@ export default {
 <style lang="scss">
 #app {
   display: block;
+  background: #000;
+  color: #fff;
 }
 
 #versionInfo {
@@ -46,13 +48,14 @@ export default {
 #nav {
   text-align: center;
   padding: 30px;
+  font-size: 14px;
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #fff;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #ff0000;
     }
   }
 }
