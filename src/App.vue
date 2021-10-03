@@ -1,21 +1,25 @@
 <template>
   <!-- TOP AREA -->
   <div class="row topArea">
-    <div class="col col-12 col-sm-12 col-md-12 col-lg-4 ">
-      <router-link to="/">Net Art Marathon</router-link>
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-3 ">
+      <router-link :to="{ name: 'Net Art Marathon' }">Net Art Marathon</router-link>
     </div>
-    <div class="col col-12 col-sm-12 col-md-12 col-lg-4 ">
-      <router-link to="/archive">Archive</router-link>
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-3 ">
+      <router-link :to="{ name: 'Archive' }">Archive</router-link>
     </div>
-    <div class="col col-12 col-sm-12 col-md-12 col-lg-4">
-      <span @click="toggleTheme">&#9711;</span>
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
+      <router-link :to="{ name: 'About' }">About</router-link>
+    </div>
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
+      <span @click="toggleTheme">&#x263C;</span>
     </div>
   </div>
 
   <!-- NAVIGATION -->
   <div id="nav">
-    <router-link to="/">Home</router-link>&nbsp;
-    <router-link to="/about">About</router-link>
+    <router-link v-for="(topic, index) in topics" :key="index" :to="{name: topic.name}" class="routerLink">
+      {{ topic.name }}
+    </router-link>
   </div>
 
   <!-- ROUTER VIEW (CONTENT) -->
@@ -24,7 +28,7 @@
   <!-- FOOTER -->
   <div id="footer">
     <div id="versionInfo">
-      Copyright &copy; 2021 Patrik H&uuml;bner<br>
+      Copyright &copy; 2021 <a href="https://www.patrik-huebner.com" target="_blank">Patrik H&uuml;bner</a><br>
       Built at: {{ store.getters.appVersion }}
     </div>
   </div>
@@ -32,7 +36,9 @@
 
 
 <script>
+import { ref } from "@vue/reactivity";
 import { useStore } from "vuex";
+import { parsePagesAndTopics } from "./router";
 
 export default {
   name: "App",
@@ -43,15 +49,40 @@ export default {
   },
   setup() {
     const store = useStore();
+    let pages = ref([]);
+    let topics = ref([]);
 
-    // Toggle the theme between light and dark
+    // Parse pages and topics, put into vueX-store and build navigation
+    parsePagesAndTopics().then((routes) => {
+      // Pages
+      store.dispatch("updateState", {
+        parent: "routing",
+        key: "pages",
+        value: routes.pages,
+      });
+      for (let page in store.state.routing.pages) {
+        pages.value.push(store.state.routing.pages[page]);
+      }
+
+      // Topics
+      store.dispatch("updateState", {
+        parent: "routing",
+        key: "topics",
+        value: routes.topics,
+      });
+      for (let topic in store.state.routing.topics) {
+        topics.value.push(store.state.routing.topics[topic]);
+      }
+    });
+
+    // Toggle between light and dark themes
     function toggleTheme() {
       document.documentElement.className == "light"
         ? (document.documentElement.className = "dark")
         : (document.documentElement.className = "light");
     }
 
-    return { store, toggleTheme };
+    return { store, toggleTheme, pages, topics };
   },
 };
 </script>
@@ -63,6 +94,7 @@ export default {
 }
 
 .topArea {
+  text-transform: uppercase;
   user-select: none;
   span {
     cursor: pointer;
@@ -75,23 +107,19 @@ export default {
 
   a {
     text-decoration: none;
-    @include theme(color, primaryColor);
-    &:hover {
-      @include theme(color, primaryColorOn);
-    }
   }
 }
 
+.routerLink {
+  margin-right: 20px;
+}
+
 #nav {
-  font-size: 14px;
+  text-transform: uppercase;
   margin: 30px 0 30px 0;
 
   a {
     text-decoration: none;
-    @include theme(color, primaryColor);
-    &:hover {
-      @include theme(color, primaryColorOn);
-    }
     // &.router-link-exact-active {
     //   @include theme(color, primaryColorOn);
     // }

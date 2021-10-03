@@ -15,10 +15,17 @@ body {
     font-size: 12px;
     line-height: 100%;
     letter-spacing: -0.05em;
-    text-transform: uppercase;
+    // text-transform: uppercase;
 }
 
 body {
     @include theme(background-color, backgroundColor);
     @include theme(color, primaryColor);
+}
+
+a {
+    @include theme(color, primaryColor);
+    &:hover {
+        @include theme(color, primaryColorOn);
+    }
 }

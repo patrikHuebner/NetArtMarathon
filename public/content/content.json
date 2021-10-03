@@ -1,0 +1,48 @@
+{
+    "pages": [
+        {
+            "name": "Net Art Marathon",
+            "view": "Home.vue",
+            "path": "/"
+        },
+        {
+            "name": "Archive",
+            "view": "Archive.vue",
+            "path": "/archive"
+        },
+        {
+            "name": "About",
+            "view": "About.vue",
+            "path": "/about"
+        }
+    ],
+    "topics": [
+        {
+            "name": "Hyperlinks"
+        },
+        {
+            "name": "Space"
+        },
+        {
+            "name": "Tool"
+        },
+        {
+            "name": "Randomness"
+        },
+        {
+            "name": "Collage"
+        },
+        {
+            "name": "Game"
+        },
+        {
+            "name": "Time"
+        },
+        {
+            "name": "Sensors"
+        },
+        {
+            "name": "Forms"
+        }
+    ]
+}
