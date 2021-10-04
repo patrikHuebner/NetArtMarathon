@@ -1,18 +1,19 @@
 <template>
-  <span class="tag">#{{ projectDetails.topic }}</span>
-  <h2>{{projectDetails.name}}</h2>
+  <ProjectHeader />
+
+  <ProjectFooter />
 </template>
 
 <script>
-import { ref } from "vue";
-import { getProjectDetails } from "../../utils/utils";
+import ProjectHeader from "../../components/project_header.vue";
+import ProjectFooter from "../../components/project_footer.vue";
 
 export default {
-  setup() {
-    const projectDetails = ref(getProjectDetails());
-
-    return { projectDetails };
+  components: {
+    ProjectHeader,
+    ProjectFooter,
   },
+  setup() {},
 };
 </script>
 

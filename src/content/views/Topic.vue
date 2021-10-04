@@ -25,21 +25,17 @@
   </div>
 
   <!-- RELATED LINKS -->
-  <div v-if="store.getters.researchLinks(currentRouteName)">
-    <div class="row researchLinks">
-      <h4>Links related to this topic</h4>
-      <div class="col col-12 col-md-4 col-lg-3 researchLink" v-for="(links, index) in store.getters.researchLinks(currentRouteName)" :key="index">
-        <sup>{{index}}</sup> <a :href="links.link" target="_blank">{{ links.name }}</a>
-      </div>
-    </div>
-  </div>
-
+  <ResearchLinkList :topic="currentRouteName"/>
 </template>
 
 <script>
 import { useStore } from "vuex";
+import ResearchLinkList from "../../components/researchLinkList.vue";
 
 export default {
+  components: {
+    ResearchLinkList,
+  },
   computed: {
     currentRouteName() {
       return this.$route.name;

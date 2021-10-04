@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col col-12 col-md-6 col-lg-6" style="font-size: calc(11vw + 24px); margin-top: 50px; line-height: 1;">
+    <div class="col col-12 col-md-6 col-lg-6" style="font-size: calc(9vw + 24px); margin-top: 50px; line-height: 1;">
       Net Art Marathon
     </div>
   </div>
