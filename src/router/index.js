@@ -5,6 +5,7 @@ async function parsePagesAndTopics() {
   let routes = {
     pages: [],
     topics: [],
+    content: [],
     combined: [],
   }
 
@@ -26,7 +27,7 @@ async function parsePagesAndTopics() {
   // Load and parse topics
   for (let page in json['topics']) {
     let route = {
-      path: '/'+json['topics'][page].name,
+      path: '/' + json['topics'][page].name,
       name: json['topics'][page].name,
       component: () => import('../content/views/Topic.vue')
     }
@@ -34,6 +35,17 @@ async function parsePagesAndTopics() {
   }
   routes.combined.push(...routes.topics);
 
+  // Load and parse content
+  for (let content in json['content']) {
+    let route = {
+      path: '/' + json['content'][content].topic + '/' + json['content'][content].name.replace(/ /g, ''),
+      name: json['content'][content].name,
+      topic: json['content'][content].topic,
+      component: () => import('../content/' + json['content'][content].view) // Lazy load only when requested
+    }
+    routes.content.push(route);
+  }
+  routes.combined.push(...routes.content);
 
   return routes;
 }

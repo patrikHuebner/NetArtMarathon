@@ -9,12 +9,25 @@ export default createStore({
     },
     routing: {
       pages: null,
-      topics: null
+      topics: null,
+      content: null,
     }
   },
   getters: {
     appVersion: (state) => {
       return state.version
+    },
+    pages: (state) => {
+      return state.routing.pages;
+    },
+    topics: (state) => {
+      return state.routing.topics;
+    },
+    content: (state) => (filter) => {
+      if (filter != undefined) {
+        return state.routing.content.filter(i => filter.includes(i.topic));
+      }
+      return state.routing.content;
     }
   },
   mutations: {

@@ -51,6 +51,7 @@ export default {
     const store = useStore();
     let pages = ref([]);
     let topics = ref([]);
+    let content = ref([]);
 
     // Parse pages and topics, put into vueX-store and build navigation
     parsePagesAndTopics().then((routes) => {
@@ -73,6 +74,16 @@ export default {
       for (let topic in store.state.routing.topics) {
         topics.value.push(store.state.routing.topics[topic]);
       }
+
+      // Content
+      store.dispatch("updateState", {
+        parent: "routing",
+        key: "content",
+        value: routes.content,
+      });
+      for (let thisContent in store.state.routing.content) {
+        content.value.push(store.state.routing.content[thisContent]);
+      }
     });
 
     // Toggle between light and dark themes
@@ -82,7 +93,7 @@ export default {
         : (document.documentElement.className = "light");
     }
 
-    return { store, toggleTheme, pages, topics };
+    return { store, toggleTheme, pages, topics, content };
   },
 };
 </script>
@@ -117,6 +128,7 @@ export default {
 #nav {
   text-transform: uppercase;
   margin: 30px 0 30px 0;
+  user-select: none;
 
   a {
     text-decoration: none;

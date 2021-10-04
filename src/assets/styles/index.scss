@@ -29,3 +29,16 @@ a {
         @include theme(color, primaryColorOn);
     }
 }
+
+h1 {
+    line-height: 1;
+    margin-bottom: 30px;
+}
+.contentCard {
+    margin-bottom: 30px;
+    @include theme(border, primaryColor, 1px solid);
+    padding: 30px;
+}
+.tag {
+    opacity: 0.5;
+}

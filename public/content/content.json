@@ -44,5 +44,22 @@
         {
             "name": "Forms"
         }
+    ],
+    "content": [
+        {
+            "name": "Hyperlink Text",
+            "topic": "Hyperlinks",
+            "view": "hyperlinks/hyperlink_text.vue"
+        },
+        {
+            "name": "Hyperlink Images",
+            "topic": "Hyperlinks",
+            "view": "hyperlinks/hyperlink_images.vue"
+        },
+        {
+            "name": "Forms Demo",
+            "topic": "Forms",
+            "view": "forms/forms_demo.vue"
+        }
     ]
 }
