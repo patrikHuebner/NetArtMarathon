@@ -28,7 +28,17 @@ export default createStore({
         return state.routing.content.filter(i => filter.includes(i.topic));
       }
       return state.routing.content;
-    }
+    },
+    researchLinks: (state) => (filter) => {
+      if (filter != undefined) {
+        return state.routing.topics.filter(i => filter.includes(i.name))[0]["researchLinks"];
+      }
+    },
+    abstract: (state) => (filter) => {
+      if (filter != undefined) {
+        return state.routing.topics.filter(i => filter.includes(i.name))[0]["abstract"];
+      }
+    },
   },
   mutations: {
     UPDATE_STATE(state, { parent, key, value }) {

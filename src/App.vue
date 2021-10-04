@@ -28,8 +28,10 @@
   <!-- FOOTER -->
   <div id="footer">
     <div id="versionInfo">
-      Copyright &copy; 2021 <a href="https://www.patrik-huebner.com" target="_blank">Patrik H&uuml;bner</a><br>
-      Built at: {{ store.getters.appVersion }}
+      A research/design project by <a href="https://www.patrik-huebner.com" target="_blank">Patrik H&uuml;bner</a><br>
+      Created as a self-initiated project in the winter semester of 2021/2022 at Digital FH Bielefeld.
+      <p/>
+      Version {{ store.getters.appVersion }}
     </div>
   </div>
 </template>
@@ -118,6 +120,9 @@ export default {
 
   a {
     text-decoration: none;
+    &.router-link-exact-active {
+      @include theme(color, primaryColorOn);
+    }
   }
 }
 
@@ -129,12 +134,16 @@ export default {
   text-transform: uppercase;
   margin: 30px 0 30px 0;
   user-select: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 
   a {
+    display: inline-block;
     text-decoration: none;
-    // &.router-link-exact-active {
-    //   @include theme(color, primaryColorOn);
-    // }
+    &.router-link-exact-active {
+      @include theme(color, primaryColorOn);
+    }
   }
 }
 

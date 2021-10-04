@@ -1,6 +1,6 @@
 <template>
   <span class="tag">#{{ projectDetails.topic }}</span>
-  <h1>{{projectDetails.name}}</h1>
+  <h2>{{projectDetails.name}}</h2>
 </template>
 
 <script>
@@ -16,5 +16,5 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 </style>

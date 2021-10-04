@@ -12,7 +12,7 @@ body {
     padding: 0;
 
     font-family: "Source Code Pro Regular", monospace;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 100%;
     letter-spacing: -0.05em;
     // text-transform: uppercase;
@@ -30,14 +30,30 @@ a {
     }
 }
 
-h1 {
+h2 {
     line-height: 1;
     margin-bottom: 30px;
+    font-size: calc(2vw + 16px);
+}
+h4 {
+    margin-bottom: 20px;
 }
 .contentCard {
     margin-bottom: 30px;
     @include theme(border, primaryColor, 1px solid);
     padding: 30px;
+}
+.abstract {
+    margin-top: 50px;
+}
+.researchLinks {
+    margin-top: 50px;
+    a {
+        font-size: 12px;
+    }
+    .researchLink {
+        margin-bottom: 10px;
+    }
 }
 .tag {
     opacity: 0.5;

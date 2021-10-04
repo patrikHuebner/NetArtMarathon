@@ -1,14 +1,36 @@
 <template>
-  <h1>{{ currentRouteName }}</h1>
+  <h2>{{ currentRouteName }}</h2>
 
-  <div class="row">
+  <!-- ABSTRACT -->
+  <div v-if="store.getters.abstract(currentRouteName)" class="abstract">
+    <div class="row">
+      <div class="col col-12 col-md-1 cold-lg-1">
+      </div>
+      <div class="col col-12 col-md-6 cold-lg-4">
+        <div v-html="store.getters.abstract(currentRouteName)"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL EXPERIMENTS WITH THIS TAG -->
+  <div class="row topicCollection">
     <div v-if="!store.getters.content(currentRouteName).length">There are no projects in this category yet. This means you must be visiting during the ongoing marathon.<br>Please come back in a couple of days/weeks and you will find something here.</div>
-    <div class="col col-6 contentCard" v-for="(content, index) in store.getters.content(currentRouteName)" :key="index">
+    <div class="col col-12 col-md-6 col-lg-6 contentCard" v-for="(content, index) in store.getters.content(currentRouteName)" :key="index">
       <router-link :to="{name: content.name}">
         {{ content.name }}
       </router-link>
       <br>
       <span class="tag">#{{ content.topic }}</span>
+    </div>
+  </div>
+
+  <!-- RELATED LINKS -->
+  <div v-if="store.getters.researchLinks(currentRouteName)">
+    <div class="row researchLinks">
+      <h4>Links related to this topic</h4>
+      <div class="col col-12 col-md-4 col-lg-3 researchLink" v-for="(links, index) in store.getters.researchLinks(currentRouteName)" :key="index">
+        <sup>{{index}}</sup> <a :href="links.link" target="_blank">{{ links.name }}</a>
+      </div>
     </div>
   </div>
 
@@ -31,5 +53,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.topicCollection {
+  margin-top: 50px;
+}
 </style>

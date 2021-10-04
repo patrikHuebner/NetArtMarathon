@@ -29,6 +29,8 @@ async function parsePagesAndTopics() {
     let route = {
       path: '/' + json['topics'][page].name,
       name: json['topics'][page].name,
+      abstract: json['topics'][page].abstract,
+      researchLinks: json['topics'][page].researchLinks,
       component: () => import('../content/views/Topic.vue')
     }
     routes.topics.push(route);

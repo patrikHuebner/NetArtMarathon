@@ -18,7 +18,42 @@
     ],
     "topics": [
         {
-            "name": "Hyperlinks"
+            "name": "Hyperlinks",
+            "abstract": "Hyperlinks are the glue of the web, guiding us through the maze of information. Their ubiquity makes them feel almost invisible nowadays, yet the concept has had wide-ranging implications ever since it was <a href=\"https://www.newworldencyclopedia.org/entry/Hyperlink\" target=\"_blank\">first coined by Ted Nelson in 1965 <sup>7</sup></a>. It can be argued that the Hyperlink has shaped our world in a quite profound way by unlocking the potential of the association on a global scale within a virtually infinite context of information.",
+            "researchLinks": [
+                {
+                    "name": "All You Need is Link",
+                    "link": "https://rhizome.org/editorial/2017/feb/21/all-you-need-is-link/"
+                },
+                {
+                    "name": "WE=LINK",
+                    "link": "http://we-link.chronusartcenter.org/"
+                },
+                {
+                    "name": "Agents Of Change",
+                    "link": "https://magazine.artland.com/agents-of-change-internet-net-art-how-the-world-wide-web-has-affected-the-way-we-make-art/"
+                },
+                {
+                    "name": "wwwwwwwww.jodi.org",
+                    "link": "http://wwwwwwwww.jodi.org/"
+                },
+                {
+                    "name": "Unosuno syunsceros",
+                    "link": "http://www.unosunosyunosceros.com/"
+                },
+                {
+                    "name": "Dollspace ",
+                    "link": "https://dollyoko.thing.net/"
+                },
+                {
+                    "name": "Hypertextual Consciousness",
+                    "link": "http://www.grammatron.com/htc.html"
+                },
+                {
+                    "name": "Hyperlink - New World Encyclopedia",
+                    "link": "https://www.newworldencyclopedia.org/entry/Hyperlink"
+                }
+            ]
         },
         {
             "name": "Space"
@@ -50,16 +85,6 @@
             "name": "Hyperlink Text",
             "topic": "Hyperlinks",
             "view": "hyperlinks/hyperlink_text.vue"
-        },
-        {
-            "name": "Hyperlink Images",
-            "topic": "Hyperlinks",
-            "view": "hyperlinks/hyperlink_images.vue"
-        },
-        {
-            "name": "Forms Demo",
-            "topic": "Forms",
-            "view": "forms/forms_demo.vue"
         }
     ]
 }
