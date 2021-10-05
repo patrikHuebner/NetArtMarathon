@@ -43,6 +43,7 @@ async function parsePagesAndTopics() {
       path: '/' + json['content'][content].topic + '/' + json['content'][content].name.replace(/ /g, ''),
       name: json['content'][content].name,
       topic: json['content'][content].topic,
+      thumb: json['content'][content].thumb,
       component: () => import('../content/' + json['content'][content].view) // Lazy load only when requested
     }
     routes.content.push(route);
