@@ -32,7 +32,7 @@ function getDate() {
 
 
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/NetArtMarathon/' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
 
     chainWebpack: config => {
         config.resolve.alias.set('fonts', path.resolve('public/fonts'));

@@ -28,7 +28,8 @@
   <!-- FOOTER -->
   <div id="footer">
     <div id="versionInfo">
-      A research/design project by <a href="https://www.patrik-huebner.com" target="_blank">Patrik H&uuml;bner</a><br>
+      A research/design project by <a href="https://www.patrik-huebner.com" target="_blank">Patrik H&uuml;bner</a>. &copy; 2021-2022.
+      <br>
       Created as a self-initiated project in the winter semester of 2021/2022 at Digital FH Bielefeld.
       <p/>
       Version {{ store.getters.appVersion }}

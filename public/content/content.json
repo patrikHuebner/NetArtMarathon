@@ -82,7 +82,7 @@
     ],
     "content": [
         {
-            "name": "Hyperlink Text",
+            "name": "Wikipedia Walk",
             "topic": "Hyperlinks",
             "view": "hyperlinks/hyperlink_text.vue"
         }
