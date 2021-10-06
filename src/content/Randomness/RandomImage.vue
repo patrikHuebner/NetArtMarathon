@@ -40,8 +40,8 @@ export default {
         blocks.value.push({
           top:
             random(
-              window.scrollY + 150,
-              window.innerHeight + window.scrollY - 150
+              150,
+              window.innerHeight - 150
             ) + "px",
           left: random(0, window.innerWidth / 2) + "px",
           width: random(200, window.innerWidth / 2) + "px",

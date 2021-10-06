@@ -62,7 +62,10 @@ async function newRouter() {
       let routes = routeData.combined;
       let router = createRouter({
         history: createWebHistory(process.env.BASE_URL),
-        routes
+        routes,
+        scrollBehavior(to, from, savedPosition) {
+          return { x: 0, y: 0 }
+        }
       });
 
       resolve(router);
