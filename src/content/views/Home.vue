@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col col-12 col-md-6 col-lg-6" style="font-size: calc(9vw + 24px); margin-top: 50px; line-height: 1;">
+    <div class="col col-12 col-md-6 col-lg-6 homeText">
       Net Art Marathon
     </div>
   </div>
@@ -47,4 +47,9 @@ export default {
 
 
 <style lang="scss">
+.homeText {
+  font-size: calc(8vw + 24px);
+  margin: 50px 0 50px 0;
+  line-height: 1;
+}
 </style>

@@ -2,6 +2,7 @@
   <div v-if="store.getters.abstract(topic)" class="abstract">
     <div class="row">
       <div class="col col-12 col-md-1 cold-lg-1">
+        Premise
       </div>
       <div class="col col-12 col-md-6 cold-lg-4">
         <div v-html="store.getters.abstract(topic)"></div>

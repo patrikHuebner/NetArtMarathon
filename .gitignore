@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+deploy.js
+_PSDs
 
 # local env files
 .env.local

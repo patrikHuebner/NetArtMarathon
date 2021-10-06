@@ -8,12 +8,12 @@
         {
             "name": "Archive",
             "view": "Archive.vue",
-            "path": "/archive"
+            "path": "/Archive"
         },
         {
             "name": "About",
             "view": "About.vue",
-            "path": "/about"
+            "path": "/About"
         }
     ],
     "topics": [
@@ -84,7 +84,7 @@
         {
             "name": "Wikipedia Walk",
             "topic": "Hyperlinks",
-            "view": "hyperlinks/WikipediaWalk.vue",
+            "view": "WikipediaWalk.vue",
             "thumb": "WikipediaWalk"
         }
     ]

@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "copy": "cp .htaccess dist/",
+    "deploy": "npm run build && npm run copy && node deploy"    
   },
   "dependencies": {
     "core-js": "^3.6.5",
