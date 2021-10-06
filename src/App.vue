@@ -30,8 +30,8 @@
     <div id="versionInfo">
       A research/design project by <a href="https://www.patrik-huebner.com" target="_blank">Patrik H&uuml;bner</a>. &copy; 2021-2022.
       <br>
-      Created as a self-initiated project in the winter semester of 2021/2022 at Digital FH Bielefeld.
-      <p/>
+      Created as a self-initiated project in the winter semester of 2021/2022 at <a href="https://www.fh-bielefeld.de/gestaltung/dmx/studienrichtung" target="_blank">Digital FH Bielefeld</a>.
+      <p />
       Version {{ store.getters.appVersion }}
     </div>
   </div>
@@ -94,6 +94,12 @@ export default {
       document.documentElement.className == "light"
         ? (document.documentElement.className = "dark")
         : (document.documentElement.className = "light");
+
+      store.dispatch("updateState", {
+        parent: "theme",
+        key: "mode",
+        value: document.documentElement.className,
+      });
     }
 
     return { store, toggleTheme, pages, topics, content };

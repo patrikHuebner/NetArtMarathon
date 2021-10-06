@@ -8,7 +8,7 @@
     <div class="col col-12 col-md-6 col-lg-4" v-for="(content, index) in store.getters.content(currentRouteName)" :key="index">
       <router-link :to="{name: content.name}">
         <div class="contentCard">
-          <img :src="`${publicPath}thumbs/${content.thumb}`" />
+          <img :src="`${publicPath}thumbs/${content.thumb}_${store.state.theme.mode}.jpg`" />
           <p />
           {{ content.name }}
           <br>

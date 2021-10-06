@@ -85,7 +85,7 @@
             "name": "Wikipedia Walk",
             "topic": "Hyperlinks",
             "view": "hyperlinks/WikipediaWalk.vue",
-            "thumb": "WikipediaWalk.jpg"
+            "thumb": "WikipediaWalk"
         }
     ]
 }

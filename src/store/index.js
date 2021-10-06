@@ -11,7 +11,10 @@ export default createStore({
       pages: null,
       topics: null,
       content: null,
-    }
+    },
+    theme: {
+      mode: "dark"
+    },
   },
   getters: {
     appVersion: (state) => {
