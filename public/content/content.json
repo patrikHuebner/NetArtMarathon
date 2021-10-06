@@ -18,6 +18,43 @@
     ],
     "topics": [
         {
+            "name": "Randomness",
+            "researchLinks": [
+                {
+                    "name":"Random Art",
+                    "link": "http://www.random-art.org/"
+                },
+                {
+                    "name":"How Random Art Works",
+                    "link": "https://16bpp.net/page/how-random-art-works/"
+                },
+                {
+                    "name":"it's doing it / it did it",
+                    "link": "https://www.itsdoing.it/"
+                },
+                {
+                    "name":"Net Art Generator",
+                    "link": "https://net.art-generator.com/about.html"
+                },
+                {
+                    "name":"Generating Random Art in NFTs using Verifiable Random Functions",
+                    "link": "https://medium.com/the-zap-project/generating-random-art-in-nfts-using-verifiable-random-functions-f2fecca71024"
+                },
+                {
+                    "name":"The Value of Randomness in Art and Design",
+                    "link": "https://www.fastcompany.com/3052333/the-value-of-randomness-in-art-and-design"
+                },
+                {
+                    "name":"Pure Randomness in Art",
+                    "link": "http://understandinguncertainty.org/node/1066"
+                },
+                {
+                    "name":"The principle of randomness in graphic design",
+                    "link": "https://www.canva.com/learn/design-principle-randomness/"
+                }
+            ]
+        },
+        {
             "name": "Hyperlinks",
             "abstract": "Hyperlinks are the glue of the web, guiding us through the maze of information. Their ubiquity makes them feel almost invisible nowadays, yet the concept has had wide-ranging implications ever since it was <a href=\"https://www.newworldencyclopedia.org/entry/Hyperlink\" target=\"_blank\">first coined by Ted Nelson in 1965 <sup>7</sup></a>. It can be argued that the Hyperlink has shaped our world in a quite profound way by unlocking the potential of the association on a global scale within a virtually infinite context of information.",
             "researchLinks": [
@@ -62,9 +99,6 @@
             "name": "Tool"
         },
         {
-            "name": "Randomness"
-        },
-        {
             "name": "Collage"
         },
         {
@@ -86,6 +120,12 @@
             "topic": "Hyperlinks",
             "view": "WikipediaWalk.vue",
             "thumb": "WikipediaWalk"
+        },
+        {
+            "name": "Random Image",
+            "topic": "Randomness",
+            "view": "RandomImage.vue",
+            "thumb": "RandomImage"
         }
     ]
 }
