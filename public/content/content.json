@@ -89,6 +89,10 @@
                 {
                     "name": "Hyperlink - New World Encyclopedia",
                     "link": "https://www.newworldencyclopedia.org/entry/Hyperlink"
+                },
+                {
+                    "name": "My Boyfriend Came Back From The War",
+                    "link": "https://sites.rhizome.org/anthology/lialina.html"
                 }
             ]
         },
@@ -116,16 +120,16 @@
     ],
     "content": [
         {
-            "name": "Wikipedia Walk",
-            "topic": "Hyperlinks",
-            "view": "WikipediaWalk.vue",
-            "thumb": "WikipediaWalk"
+            "name": "Random Associations",
+            "topic": "Randomness",
+            "view": "RandomAssociations.vue",
+            "thumb": "RandomAssociations"
         },
         {
-            "name": "Random Image",
+            "name": "Infinite Image Journey",
             "topic": "Randomness",
-            "view": "RandomImage.vue",
-            "thumb": "RandomImage"
+            "view": "InfiniteImageJourney.vue",
+            "thumb": "InfiniteImageJourney"
         }
     ]
 }
