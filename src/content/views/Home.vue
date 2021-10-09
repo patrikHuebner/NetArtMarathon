@@ -50,6 +50,6 @@ export default {
 .homeText {
   font-size: calc(8vw + 24px);
   margin: 50px 0 50px 0;
-  line-height: 1;
+  line-height: .9;
 }
 </style>
