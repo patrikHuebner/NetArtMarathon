@@ -2,8 +2,9 @@
   <ProjectHeader />
 
   <div id="wikiContainer">
-    <div v-for="(block, index) in blocks" :key="index" style="cursor: pointer">
-      <div @click="getRandomImage" :style="{'line-height':'1', 'position': 'absolute', 'top': block.top, 'left': block.left, 'z-index': block.zIndex, 'font-size': block.fontSize, 'width': block.width, 'height': block.height}" v-html="block.content"></div>
+    <div @click="getRandomImage" v-for="(block, index) in blocks" :key="index" style="cursor: pointer" :style="{'line-height':'1', 'position': 'absolute', 'top': block.top, 'left': block.left, 'z-index': block.zIndex, 'font-size': block.fontSize, 'width': block.width, 'height': block.height}">
+      <div v-html="block.content" class="randomImage"></div>
+      <span class="randomInfo" v-html="block.meta" :style="{'z-index': block.metaZ}"></span>
     </div>
   </div>
 
@@ -38,15 +39,11 @@ export default {
         let randomTopic = topicJSON.query.pages[topics].title;
 
         blocks.value.push({
-          top:
-            random(
-              150,
-              window.innerHeight - 150
-            ) + "px",
+          top: random(150, window.innerHeight - 150) + "px",
           left: random(0, window.innerWidth / 2) + "px",
           width: random(200, window.innerWidth / 2) + "px",
           fontSize: random(50, 100) + "px",
-          zIndex: 100,
+          zIndex: 1000,
           content:
             '<span class="hyperlink_link hyperlink_text_background">' +
             randomTopic +
@@ -54,9 +51,11 @@ export default {
         });
 
         // Once we have the random topic, grab 30 related images from Wikipedia
-        let amountOfImages = Math.round(random(5,30));
+        let amountOfImages = Math.round(random(5, 30));
         const imageResponse = await fetch(
-          "https://en.wikipedia.org/w/api.php?action=query&list=allimages&origin=*&ailimit="+amountOfImages+"&format=json&aifrom=" +
+          "https://en.wikipedia.org/w/api.php?action=query&list=allimages&origin=*&ailimit=" +
+            amountOfImages +
+            "&format=json&aifrom=" +
             randomTopic,
           {
             method: "GET",
@@ -64,15 +63,25 @@ export default {
         );
 
         const imageJSON = await imageResponse.json();
+        let index = 0;
         for (let images in imageJSON.query.allimages) {
           let width = random(50, 400);
           blocks.value.push({
+            zIndex: 200 + index,
             width: width + "px",
             left: random(0, window.innerWidth - width) + "px",
             top: random(150, window.innerHeight) + "px",
             content:
               '<img src="' + imageJSON.query.allimages[images].url + '"/>',
+            meta:
+              imageJSON.query.allimages[images].name +
+              "<br>" +
+              imageJSON.query.allimages[images].timestamp +
+              "<br>" +
+              imageJSON.query.allimages[images].title,
+            metaZ: 200 + index + 5,
           });
+          index += 10;
         }
       }
     }
@@ -101,5 +110,19 @@ export default {
   &:hover {
     @include theme(color, primaryColorOn);
   }
+}
+.randomImage {
+  transition: 1s;
+  &:hover {
+    scale: 1.1;
+    .randomInfo {
+      scale: 2.1;
+    }
+  }
+}
+.randomInfo {
+  position: absolute;
+  transform: rotate(90deg);
+  font-size: 8px;
 }
 </style>

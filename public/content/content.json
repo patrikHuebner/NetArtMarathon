@@ -22,35 +22,35 @@
             "abstract": "Randomness is an inherent part of our existence. We measure and describe its varying manifestations with the concept of <i><a href=\"https://en.wikipedia.org/wiki/Entropy_(information_theory)\" target=\"_blank\">entropy</a></i> – the gradual decline of everything into disorder. Yet, it can be argued that our tendency to perceive patterns wherever we look and the urge to bring order to chaos is what underpins most of humanity’s creative endeavors - a rebellion of sorts against the ineviteable chaos that is omnipresent. Combining the vast and often chaotic pool of information that is the Internet with deliberately random design choices seems like a great playground to test what responses this provokes in us. In this context, it seems interesting to find out how the concept of <i><a href=\"https://en.wikipedia.org/wiki/Apophenia\" target=\"_blank\">Apophenia</a></i> - the tendency to perceive meaningful patterns within randomness – adds value to an inherently value-free approach.",
             "researchLinks": [
                 {
-                    "name":"Random Art",
+                    "name": "Random Art",
                     "link": "http://www.random-art.org/"
                 },
                 {
-                    "name":"How Random Art Works",
+                    "name": "How Random Art Works",
                     "link": "https://16bpp.net/page/how-random-art-works/"
                 },
                 {
-                    "name":"it's doing it / it did it",
+                    "name": "it's doing it / it did it",
                     "link": "https://www.itsdoing.it/"
                 },
                 {
-                    "name":"Net Art Generator",
+                    "name": "Net Art Generator",
                     "link": "https://net.art-generator.com/about.html"
                 },
                 {
-                    "name":"Generating Random Art in NFTs using Verifiable Random Functions",
+                    "name": "Generating Random Art in NFTs using Verifiable Random Functions",
                     "link": "https://medium.com/the-zap-project/generating-random-art-in-nfts-using-verifiable-random-functions-f2fecca71024"
                 },
                 {
-                    "name":"The Value of Randomness in Art and Design",
+                    "name": "The Value of Randomness in Art and Design",
                     "link": "https://www.fastcompany.com/3052333/the-value-of-randomness-in-art-and-design"
                 },
                 {
-                    "name":"Pure Randomness in Art",
+                    "name": "Pure Randomness in Art",
                     "link": "http://understandinguncertainty.org/node/1066"
                 },
                 {
-                    "name":"The principle of randomness in graphic design",
+                    "name": "The principle of randomness in graphic design",
                     "link": "https://www.canva.com/learn/design-principle-randomness/"
                 }
             ]
@@ -131,6 +131,12 @@
             "topic": "Randomness",
             "view": "InfiniteImageJourney.vue",
             "thumb": "InfiniteImageJourney"
+        },
+        {
+            "name": "An Automated Conversation",
+            "topic": "Randomness",
+            "view": "AutomatedConversation.vue",
+            "thumb": "AnAutomatedConversation"
         }
     ]
 }

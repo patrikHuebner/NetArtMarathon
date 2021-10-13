@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    version: process.env.VERSION || '0',
+    version: process.env.VUE_APP_VERSION || '0',
     folders: {
       base: process.env.BASE_URL,
       fonts: 'fonts/',
@@ -18,7 +18,7 @@ export default createStore({
   },
   getters: {
     appVersion: (state) => {
-      return state.version
+      return state.version.replace(/["]+/g, '')
     },
     pages: (state) => {
       return state.routing.pages;

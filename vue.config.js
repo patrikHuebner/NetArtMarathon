@@ -30,22 +30,12 @@ function getDate() {
 }
 
 
-
+process.env.VUE_APP_VERSION = JSON.stringify(getDate());
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
 
     chainWebpack: config => {
         config.resolve.alias.set('fonts', path.resolve('public/fonts'));
     },
-
-    configureWebpack: {
-        plugins: [
-            new webpack.DefinePlugin({
-                'process.env': {
-                    VERSION: JSON.stringify(getDate())
-                }
-            }),
-        ]
-    }
 
 }

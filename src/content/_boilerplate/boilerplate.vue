@@ -18,4 +18,6 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/styles/theming.scss";
+
 </style>
