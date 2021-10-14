@@ -133,10 +133,10 @@
             "thumb": "InfiniteImageJourney"
         },
         {
-            "name": "An Automated Conversation",
+            "name": "Chatstream",
             "topic": "Randomness",
-            "view": "AutomatedConversation.vue",
-            "thumb": "AnAutomatedConversation"
+            "view": "Chatstream.vue",
+            "thumb": "Chatstream"
         }
     ]
 }

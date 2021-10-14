@@ -1,10 +1,14 @@
 <template>
   <ProjectHeader />
 
-  <div v-for="(story, index) in stories.slice().reverse()" :key="index" class="chatBox">
-    <div :class="'chatBubble '+story.type">
-      {{ story.content }}
-    </div>
+  <div id="chatBoxContainer">
+    <transition-group name="list" tag="div">
+      <div v-for="(story, index) in stories" :key="index" class="chatBox">
+        <div :class="'chatBubble list-item '+story.type">
+          {{ story.content }}
+        </div>
+      </div>
+    </transition-group>
   </div>
 
   <ProjectFooter />
@@ -24,11 +28,16 @@ export default {
     let stories = ref([]);
     let index = 0;
 
+    let userHasScrolled = false;
+    window.addEventListener("wheel", (e) => {
+      userHasScrolled = true;
+    });
+
     tellMeAStory();
 
     setInterval(() => {
       tellMeAStory();
-    }, 5000);
+    }, Math.random() * 4000 + 1000);
 
     async function tellMeAStory() {
       const response = await fetch(
@@ -53,6 +62,12 @@ export default {
 
           stories.value.push(chatData);
 
+          if (!userHasScrolled) {
+            //let element = document.getElementById("chatBoxContainer");
+            let element = document.body;
+            element.scrollIntoView({ behavior: "smooth", block: "end" });
+          }
+
           index++;
         } else {
           tellMeAStory();
@@ -67,6 +82,12 @@ export default {
 
 <style lang="scss">
 @import "../../assets/styles/theming.scss";
+
+#chatBoxContainer {
+  // height: 50vh; /* 60vh */
+  // overflow-y: scroll;
+  // overflow-x: hidden;
+}
 
 .chatBox {
   display: flex;
@@ -131,5 +152,19 @@ export default {
     @include theme(background-color, backgroundColor);
     border-bottom-right-radius: 10px;
   }
+}
+
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
