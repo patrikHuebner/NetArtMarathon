@@ -18,6 +18,7 @@
 import ProjectHeader from "../../components/project_header.vue";
 import ProjectFooter from "../../components/project_footer.vue";
 import { ref } from "@vue/reactivity";
+import { onUnmounted } from "@vue/runtime-dom";
 
 export default {
   components: {
@@ -27,15 +28,21 @@ export default {
   setup() {
     let stories = ref([]);
     let index = 0;
+    let requestInterval = null;
 
     let userHasScrolled = false;
     window.addEventListener("wheel", (e) => {
       userHasScrolled = true;
     });
 
+    onUnmounted(() => {
+      clearInterval(requestInterval);
+    });
+
     tellMeAStory();
 
-    setInterval(() => {
+    requestInterval = setInterval(() => {
+      console.log("Requesting");
       tellMeAStory();
     }, Math.random() * 4000 + 1000);
 
@@ -63,7 +70,6 @@ export default {
           stories.value.push(chatData);
 
           if (!userHasScrolled) {
-            //let element = document.getElementById("chatBoxContainer");
             let element = document.body;
             element.scrollIntoView({ behavior: "smooth", block: "end" });
           }
@@ -82,12 +88,6 @@ export default {
 
 <style lang="scss">
 @import "../../assets/styles/theming.scss";
-
-#chatBoxContainer {
-  // height: 50vh; /* 60vh */
-  // overflow-y: scroll;
-  // overflow-x: hidden;
-}
 
 .chatBox {
   display: flex;
