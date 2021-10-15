@@ -5,7 +5,8 @@
     <transition-group name="list" tag="div">
       <div v-for="(story, index) in stories" :key="index" class="chatBox">
         <div :class="'chatBubble list-item '+story.type">
-          {{ story.content }}
+          <!-- {{ story.content }} -->
+          <div v-html="story.content"></div>
         </div>
       </div>
     </transition-group>
@@ -42,11 +43,13 @@ export default {
     tellMeAStory();
 
     requestInterval = setInterval(() => {
-      console.log("Requesting");
       tellMeAStory();
-    }, Math.random() * 4000 + 1000);
+    }, Math.random() * 4000 + 2000);
 
     async function tellMeAStory() {
+      // Remove last entry from array (the typing bubble)
+      stories.value.pop();
+
       const response = await fetch(
         // "https://en.wikipedia.org/w/api.php?origin=*&action=query&generator=random&prop=extracts&exchars=500&format=json"
         "https://en.wikipedia.org/w/api.php?origin=*&action=query&generator=random&prop=extracts&exsentences=2&exlimit=1&explaintext=1&format=json"
@@ -56,24 +59,38 @@ export default {
       for (let children in json.query.pages) {
         let result = json.query.pages[children].extract;
         if (result != "") {
+          // The actual content bubble
           let chatData = {
             content: result,
             type: null,
           };
-
           if (index % 2 == 0) {
             chatData.type = "send";
           } else {
             chatData.type = "receive";
           }
-
           stories.value.push(chatData);
 
+          // The "typing" bubble
+          let typing = {
+            content:
+              '<div class="typing"> <span></span>  <span></span>  <span></span> </div>',
+            type: null,
+          };
+          if (index % 2 == 0) {
+            typing.type = "receive";
+          } else {
+            typing.type = "send";
+          }
+          stories.value.push(typing);
+
+          // Scroll to bottom of page
           if (!userHasScrolled) {
             let element = document.body;
             element.scrollIntoView({ behavior: "smooth", block: "end" });
           }
 
+          // The index is used to determine if a post is of form "send" or "receive"
           index++;
         } else {
           tellMeAStory();
@@ -166,5 +183,56 @@ export default {
 .list-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+
+$dot-width: 7px;
+$speed: 1.5s;
+
+.receive .typing span {
+  background: #000;
+}
+.send .typing span {
+  background: #fff;
+}
+
+.typing {
+  position: relative;
+  width: 40px;
+  height: 25px;
+
+  span {
+    content: "";
+    animation: blink $speed infinite;
+    animation-fill-mode: both;
+    height: $dot-width;
+    width: $dot-width;
+    // background: $dot-color;
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    border-radius: 50%;
+
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+      margin-left: $dot-width * 1.5;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+      margin-left: $dot-width * 3;
+    }
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
 }
 </style>

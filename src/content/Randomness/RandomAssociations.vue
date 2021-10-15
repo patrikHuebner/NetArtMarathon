@@ -73,6 +73,10 @@ export default {
               result.title +
               "</span>",
           });
+
+          if (typeof event != "undefined") {
+            window.scrollTo(0, window.scrollY + 300);
+          }
         }
       }
     }
