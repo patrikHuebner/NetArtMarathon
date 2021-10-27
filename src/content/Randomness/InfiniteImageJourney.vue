@@ -2,7 +2,7 @@
   <ProjectHeader />
 
   <div id="wikiContainer">
-    <div @click="getRandomImage" v-for="(block, index) in blocks" :key="index" style="cursor: pointer" :style="{'line-height':'1', 'position': 'absolute', 'top': block.top, 'left': block.left, 'z-index': block.zIndex, 'font-size': block.fontSize, 'width': block.width, 'height': block.height}">
+    <div class="wikiContainer_outerImage" @click="getRandomImage" v-for="(block, index) in blocks" :key="index" style="cursor: pointer" :style="{'line-height':'1', 'position': 'absolute', 'top': block.top, 'left': block.left, 'z-index': block.zIndex, 'font-size': block.fontSize, 'width': block.width, 'height': block.height}">
       <div v-html="block.content" class="randomImage"></div>
       <span class="randomInfo" v-html="block.meta" :style="{'z-index': block.metaZ}"></span>
     </div>
@@ -50,8 +50,8 @@ export default {
             "</span>",
         });
 
-        // Once we have the random topic, grab 30 related images from Wikipedia
-        let amountOfImages = Math.round(random(5, 30));
+        // Once we have the random topic, grab a random amount of related images from Wikipedia
+        let amountOfImages = Math.round(random(15, 40));
         const imageResponse = await fetch(
           "https://en.wikipedia.org/w/api.php?action=query&list=allimages&origin=*&ailimit=" +
             amountOfImages +
@@ -65,14 +65,18 @@ export default {
         const imageJSON = await imageResponse.json();
         let index = 0;
         for (let images in imageJSON.query.allimages) {
-          let width = random(50, 400);
+          let width = random(50, window.innerWidth / 3);
           blocks.value.push({
             zIndex: 200 + index,
             width: width + "px",
             left: random(0, window.innerWidth - width) + "px",
             top: random(150, window.innerHeight) + "px",
             content:
-              '<img src="' + imageJSON.query.allimages[images].url + '"/>',
+              '<img src="' +
+              imageJSON.query.allimages[images].url +
+              '"/ style="width: ' +
+              width +
+              'px">',
             meta:
               imageJSON.query.allimages[images].name +
               "<br>" +
@@ -110,6 +114,10 @@ export default {
   &:hover {
     @include theme(color, primaryColorOn);
   }
+}
+
+.wikiContainer_outerImage:hover {
+  z-index: 3000 !important;
 }
 .randomImage {
   transition: 1s;

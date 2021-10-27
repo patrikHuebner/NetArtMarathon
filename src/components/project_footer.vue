@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col">
-      <!-- <TopicAbstract :topic="projectDetails.topic" /> -->
-      <!-- <ResearchLinkList :topic="projectDetails.topic" /> -->
+      <TopicAbstract :topic="projectDetails.topic" />
+      <ResearchLinkList :topic="projectDetails.topic" />
     </div>
   </div>
 </template>

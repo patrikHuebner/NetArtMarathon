@@ -44,11 +44,13 @@ export default {
 
     requestInterval = setInterval(() => {
       tellMeAStory();
-    }, Math.random() * 4000 + 2000);
+    }, Math.random() * 4000 + 3000);
 
-    async function tellMeAStory() {
+    async function tellMeAStory(actionCode) {
       // Remove last entry from array (the typing bubble)
-      stories.value.pop();
+      if (actionCode != "dont remove") {
+        stories.value.pop();
+      }
 
       const response = await fetch(
         // "https://en.wikipedia.org/w/api.php?origin=*&action=query&generator=random&prop=extracts&exchars=500&format=json"
@@ -93,7 +95,7 @@ export default {
           // The index is used to determine if a post is of form "send" or "receive"
           index++;
         } else {
-          tellMeAStory();
+          tellMeAStory("dont remove");
         }
       }
     }

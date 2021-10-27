@@ -137,6 +137,11 @@
             "topic": "Randomness",
             "view": "Chatstream.vue",
             "thumb": "Chatstream"
+        },
+        {
+            "name": "Website",
+            "topic": "Hyperlinks",
+            "view": "Website.vue"
         }
     ]
 }
