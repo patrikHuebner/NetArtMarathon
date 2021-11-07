@@ -121,6 +121,11 @@
     ],
     "content": [
         {
+            "name": "A Web Of Relationships",
+            "topic": "Hyperlinks",
+            "view": "WebOfRelationships.vue"
+        },
+        {
             "name": "Random Associations",
             "topic": "Randomness",
             "view": "RandomAssociations.vue",
@@ -137,11 +142,6 @@
             "topic": "Randomness",
             "view": "Chatstream.vue",
             "thumb": "Chatstream"
-        },
-        {
-            "name": "Website",
-            "topic": "Hyperlinks",
-            "view": "Website.vue"
         }
     ]
 }
