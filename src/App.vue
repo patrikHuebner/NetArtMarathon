@@ -1,26 +1,36 @@
 <template>
   <!-- TOP AREA -->
-  <div class="row topArea">
-    <div class="col col-12 col-sm-12 col-md-12 col-lg-3 ">
-      <router-link :to="{ name: 'Net Art Marathon' }">Net Art Marathon</router-link>
+  <div class="navigation">
+    <div class="row topArea">
+      <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
+        <router-link :to="{ name: 'Net Art Marathon' }"
+          >Net Art Marathon</router-link
+        >
+      </div>
+      <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
+        <router-link :to="{ name: 'Archive' }">Archive</router-link>
+      </div>
+      <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
+        <router-link :to="{ name: 'About' }">About</router-link>
+      </div>
+      <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
+        <span @click="toggleTheme">&#x263C;</span>
+      </div>
     </div>
-    <div class="col col-12 col-sm-12 col-md-12 col-lg-3 ">
-      <router-link :to="{ name: 'Archive' }">Archive</router-link>
-    </div>
-    <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
-      <router-link :to="{ name: 'About' }">About</router-link>
-    </div>
-    <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
-      <span @click="toggleTheme">&#x263C;</span>
-    </div>
-  </div>
 
-  <!-- NAVIGATION -->
-  <div id="nav">
-    <router-link v-for="(topic, index) in topics" :key="index" :to="{name: topic.name}" class="routerLink">
-      {{ topic.name }}
-    </router-link>
+    <!-- NAVIGATION -->
+    <div id="nav">
+      <router-link
+        v-for="(topic, index) in topics"
+        :key="index"
+        :to="{ name: topic.name }"
+        class="routerLink"
+      >
+        {{ topic.name }}
+      </router-link>
+    </div>
   </div>
+  <div class="navHeightGenerator"></div>
 
   <!-- ROUTER VIEW (CONTENT) -->
   <router-view />
@@ -28,9 +38,17 @@
   <!-- FOOTER -->
   <div id="footer">
     <div id="versionInfo">
-      A research/design project by <a href="https://www.patrik-huebner.com" target="_blank">Patrik H&uuml;bner</a>. &copy; 2021-2022.
-      <br>
-      Created as a self-initiated project in the winter semester of 2021/2022 at <a href="https://www.fh-bielefeld.de/gestaltung/dmx/studienrichtung" target="_blank">Digital FH Bielefeld</a>.
+      A research/design project by
+      <a href="https://www.patrik-huebner.com" target="_blank"
+        >Patrik H&uuml;bner</a
+      >. &copy; 2021-2022.
+      <br />
+      Created as a self-initiated project in the winter semester of 2021/2022 at
+      <a
+        href="https://www.fh-bielefeld.de/gestaltung/dmx/studienrichtung"
+        target="_blank"
+        >Digital FH Bielefeld</a
+      >.
       <p />
       Version {{ store.getters.appVersion }}
     </div>
@@ -135,6 +153,20 @@ export default {
 
 .routerLink {
   margin-right: 20px;
+}
+
+.navigation {
+  position: absolute;
+  z-index: 999999;
+  width: 100%;
+}
+.navHeightGenerator {
+  height: 90px;
+}
+@media screen and (max-width: 900px) {
+  .navHeightGenerator {
+    height: 120px;
+  }
 }
 
 #nav {

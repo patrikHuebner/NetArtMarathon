@@ -42,6 +42,9 @@ export default createStore({
         return state.routing.topics.filter(i => filter.includes(i.name))[0]["abstract"];
       }
     },
+    themeChange: (state) => {
+      return state.theme.mode;
+    },
   },
   mutations: {
     UPDATE_STATE(state, { parent, key, value }) {
