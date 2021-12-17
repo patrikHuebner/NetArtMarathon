@@ -143,6 +143,11 @@
             "topic": "Randomness",
             "view": "Chatstream.vue",
             "thumb": "Chatstream"
+        },
+        {
+            "name": "Divided_Reunited",
+            "topic": "Space",
+            "view": "SpaceGrid.vue"
         }
     ]
 }

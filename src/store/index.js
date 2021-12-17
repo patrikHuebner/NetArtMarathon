@@ -3,6 +3,16 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     version: process.env.VUE_APP_VERSION || '0',
+    frameCount: 0,
+    three: {
+      usePostProcessing: false,
+      antialiasing: true,
+      retinaResolution: true,
+      pixelRatio: 1,
+      shadows: true,
+      capFramerate: false,
+      cappedFramerate: 60,
+    },
     folders: {
       base: process.env.BASE_URL,
       fonts: 'fonts/',
@@ -47,11 +57,17 @@ export default createStore({
     },
   },
   mutations: {
+    ANIMATION_INCREASE_FRAMECOUNT(state) {
+      state.frameCount++;
+    },
     UPDATE_STATE(state, { parent, key, value }) {
       state[parent][key] = value;
     },
   },
   actions: {
+    animation_increaseFrameCount({ commit }) {
+      commit('ANIMATION_INCREASE_FRAMECOUNT');
+    },
     updateState({ commit }, { parent, key, value }) {
       commit('UPDATE_STATE', { parent, key, value });
     },

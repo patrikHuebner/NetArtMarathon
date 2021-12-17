@@ -14,7 +14,7 @@
         <router-link :to="{ name: 'About' }">About</router-link>
       </div>
       <div class="col col-12 col-sm-12 col-md-12 col-lg-3">
-        <span @click="toggleTheme">&#x263C;</span>
+        <span @click="toggleTheme">&#x263C; Switch Theme</span>
       </div>
     </div>
 

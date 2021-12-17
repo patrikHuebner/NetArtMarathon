@@ -1,26 +1,31 @@
 <template>
-  <div class="row">
-    <div class="col col-12 col-md-6 col-lg-6 homeText">
-      Net Art Marathon
-    </div>
-  </div>
+  <h2>Net Art Marathon</h2>
 
   <!-- ALL EXPERIMENTS -->
   <div class="row topicCollection">
-    <div v-if="!store.getters.content().length">There are no projects in this category yet. This means you must be visiting during the ongoing marathon.<br>Please come back in a couple of days/weeks and you will find something here.</div>
-    <div class="col col-12 col-md-6 col-lg-4" v-for="(content, index) in store.getters.content()" :key="index">
-      <router-link :to="{name: content.name}">
+    <div v-if="!store.getters.content().length">
+      There are no projects in this category yet. This means you must be
+      visiting during the ongoing marathon.<br />Please come back in a couple of
+      days/weeks and you will find something here.
+    </div>
+    <div
+      class="col col-12 col-md-6 col-lg-4"
+      v-for="(content, index) in store.getters.content()"
+      :key="index"
+    >
+      <router-link :to="{ name: content.name }">
         <div class="contentCard">
-          <img :src="`${publicPath}thumbs/${content.thumb}_${store.state.theme.mode}.jpg`" />
+          <img
+            :src="`${publicPath}thumbs/${content.thumb}_${store.state.theme.mode}.jpg`"
+          />
           <p />
           {{ content.name }}
-          <br>
+          <br />
           <span class="tag">#{{ content.topic }}</span>
         </div>
       </router-link>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -48,8 +53,8 @@ export default {
 
 <style lang="scss">
 .homeText {
-  font-size: calc(8vw + 24px);
-  margin: 50px 0 50px 0;
-  line-height: .9;
+  // font-size: calc(3vw + 24px);
+  margin: 30px 0 80px 0;
+  line-height: 0.9;
 }
 </style>

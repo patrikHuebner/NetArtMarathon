@@ -66,6 +66,7 @@ export default {
     );
 
     onMounted(() => {
+      setTimeout(() => window.scrollTo(0, 0), 300);
       loadWebsite(websiteToLoad.value).then((urls) => {
         createNetwork(urls);
       });
@@ -182,9 +183,17 @@ export default {
           hover: true,
         },
       };
+      if (store.state.theme.mode == "light") {
+        options.edges.color = "#000000";
+        options.nodes.font.color = "#000000";
+        options.nodes.color.border = "#ffffff";
+      }
 
       // CREATE NETWORK
       network = new Network(container, data, options);
+      // setTimeout(() => {
+      //   network.fit();
+      // }, 500);
 
       //
       network.on("hoverNode", function (params) {
@@ -305,7 +314,7 @@ export default {
   width: 100vw;
   height: 100vh;
   display: block;
-  // position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
 }
