@@ -147,7 +147,8 @@
         {
             "name": "Divided_Reunited",
             "topic": "Space",
-            "view": "SpaceGrid.vue"
+            "view": "DividedReunited.vue",
+            "thumb": "DividedReunited"
         }
     ]
 }

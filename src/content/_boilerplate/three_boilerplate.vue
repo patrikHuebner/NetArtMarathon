@@ -13,7 +13,8 @@
 import ProjectHeader from "../../components/project_header.vue";
 import ProjectFooter from "../../components/project_footer.vue";
 import THREE_Manager from "@/managers/THREE_Manager.js";
-import { onMounted } from "@vue/runtime-dom";
+import { onMounted, watch } from "@vue/runtime-dom";
+import { useStore } from "vuex";
 
 export default {
   components: {
@@ -21,6 +22,8 @@ export default {
     ProjectFooter,
   },
   setup() {
+    const store = useStore();
+
     onMounted(() => {
       let threeManager = new THREE_Manager({
         parentContainer: "WEBGL",
@@ -33,6 +36,20 @@ export default {
         cameraTarget: { x: 0, y: 0, z: 0 },
         keepControlsAboveGround: false,
       });
+
+      watch(
+        () => store.getters.themeChange,
+        function () {
+          if (threeManager) {
+            if (store.state.theme.mode == "dark") {
+              threeManager.setBackground("#000000");
+            }
+            if (store.state.theme.mode == "light") {
+              threeManager.setBackground("#ffffff");
+            }
+          }
+        }
+      );
 
       let sketch = new Sketch({ threeManager: threeManager });
       threeManager.initSketch(sketch);
@@ -65,6 +82,8 @@ class Sketch {
       this.demoCube.rotation.y += this.three.clock.getDelta();
     }
   }
+
+  resize() {}
 
   // METHODS ---------------------------------------------------------------------------------------------
 

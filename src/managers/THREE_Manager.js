@@ -22,6 +22,7 @@ export default class THREE_Manager {
         this.cameraRotation = (typeof args.cameraRotation !== 'undefined') ? args.cameraRotation : { x: 0, y: 0, z: 0 };
         this.cameraTarget = (typeof args.cameraTarget !== 'undefined') ? args.cameraTarget : { x: 0, y: 0, z: 0 };
         this.keepControlsAboveGround = (typeof args.keepControlsAboveGround !== 'undefined') ? args.keepControlsAboveGround : true;
+        this.fullScreenCamera = (typeof args.fullScreenCamera !== 'undefined') ? args.fullScreenCamera : false;
 
         //
         this.animationHandler = null;
@@ -112,15 +113,27 @@ export default class THREE_Manager {
 
 
 
+    setBackground(color) {
+        this.renderer.setClearColor(new THREE.Color(color));
+        this.backgroundColor = color;
+    }
+
+
+
     // CAMERA ---------------------------------------------------------------------------------------------
     init_camera() {
-        this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 20000);
-        this.camera.position.set(this.cameraPosition.x, this.cameraPosition.y, this.cameraPosition.z);
-        this.camera.rotation.set(this.cameraRotation.x, this.cameraRotation.y, this.cameraRotation.z);
-        this.camera.lookAt(0,0,0);
-        this.camera.fov = this.cameraPosition.fov;
-
-        this.camera.updateProjectionMatrix();
+        if (!this.fullScreenCamera) {
+            this.camera = new THREE.PerspectiveCamera(this.cameraPosition.fov, window.innerWidth / window.innerHeight, 0.001, 2000);
+            this.camera.position.set(this.cameraPosition.x, this.cameraPosition.y, this.cameraPosition.z);
+            this.camera.rotation.set(this.cameraRotation.x, this.cameraRotation.y, this.cameraRotation.z);
+            this.camera.lookAt(0, 0, 0);
+            this.camera.updateProjectionMatrix();
+        } else {
+            let frustrumSize = 1;
+            let aspect = window.innerWidth / window.innerHeight;
+            this.camera = new THREE.OrthographicCamera(frustrumSize / -2, frustrumSize / 2, frustrumSize / 2, frustrumSize / -2, -1000, 1000);
+            this.camera.position.set(0, 0, 2);
+        }
     }
 
 
@@ -179,6 +192,11 @@ export default class THREE_Manager {
         this.camera.updateProjectionMatrix();
 
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+
+        if (this.sketch) {
+            this.sketch.resize();
+        }
+
         // if (this.postProcessing) {
         //     this.postProcessing.resize();
         // }

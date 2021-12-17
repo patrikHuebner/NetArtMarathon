@@ -10,8 +10,6 @@ export default createStore({
       retinaResolution: true,
       pixelRatio: 1,
       shadows: true,
-      capFramerate: false,
-      cappedFramerate: 60,
     },
     folders: {
       base: process.env.BASE_URL,
